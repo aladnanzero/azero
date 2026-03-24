@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Md Sibbir Ahamed | Cybersecurity Specialist & Penetration Tester</title>
+    <meta name="description" content="Portfolio of Md Sibbir Ahamed, a Cybersecurity Specialist, Penetration Tester, and Security Researcher focusing on ethical hacking, bug bounties, and web application security.">
+    <meta name="keywords" content="Cybersecurity, Penetration Tester, Bug Bounty, Security Researcher, Ethical Hacker, InfoSec">
+    <meta name="author" content="Md Sibbir Ahamed">
+    
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Md Sibbir Ahamed | Cybersecurity Portfolio">
+    <meta property="og:description" content="Penetration Tester & Security Researcher Portfolio">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bgBase: '#0b0f19',
+                        surface: '#111827',
+                        surfaceLight: '#1f2937',
+                        accPrimary: '#00ff9c',
+                        accSecondary: '#00d4ff',
+                        textMain: '#e6edf3',
+                        textMuted: '#8b949e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%231f2937' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Animations */
+        body {
+            background-color: #0b0f19;
+            color: #e6edf3;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid #1f2937;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: #00ff9c;
+            box-shadow: 0 0 20px rgba(0, 255, 156, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .glass-card-blue:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Terminal blinking cursor */
+        .cursor::after {
+            content: '█';
+            animation: blink 1s step-start infinite;
+            color: #00ff9c;
+            margin-left: 5px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00ff9c; }
+
+        /* Timeline styles */
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #00ff9c;
+            border-radius: 50%;
+            position: absolute;
+            left: -8px;
+            top: 24px;
+            box-shadow: 0 0 10px #00ff9c;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern selection:bg-accPrimary selection:text-bgBase antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 font-mono text-xl font-bold tracking-tighter">
+                    <span class="text-accPrimary">root@</span><span class="text-textMain">portfolio</span><span class="text-accSecondary">:~#</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6 font-mono text-sm">
+                        <a href="#about" class="text-textMuted hover:text-accPrimary transition-colors">./about</a>
+                        <a href="#skills" class="text-textMuted hover:text-accPrimary transition-colors">./skills</a>
+                        <a href="#projects" class="text-textMuted hover:text-accPrimary transition-colors">./projects</a>
+                        <a href="#bounty" class="text-textMuted hover:text-accPrimary transition-colors">./bounty</a>
+                        <a href="#blog" class="text-textMuted hover:text-accPrimary transition-colors">./blog</a>
+                        <a href="#contact" class="border border-accPrimary text-accPrimary hover:bg-accPrimary hover:text-bgBase px-4 py-2 rounded transition-all">./contact.sh</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-textMuted hover:text-accPrimary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-surfaceLight">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-mono text-sm">
+                <a href="#about" class="block px-3 py-2 text-textMuted hover:text-accPrimary">./about</a>
+                <a href="#skills" class="block px-3 py-2 text-textMuted hover:text-accPrimary">./skills</a>
+                <a href="#projects" class="block px-3 py-2 text-textMuted hover:text-accPrimary">./projects</a>
+                <a href="#bounty" class="block px-3 py-2 text-textMuted hover:text-accPrimary">./bounty</a>
+                <a href="#contact" class="block px-3 py-2 text-accPrimary">./contact.sh</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-4 relative">
+            <div class="max-w-4xl w-full">
+                <!-- Terminal UI -->
+                <div class="bg-surface rounded-lg border border-surfaceLight shadow-2xl overflow-hidden reveal">
+                    <!-- Terminal Header -->
+                    <div class="bg-surfaceLight px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="mx-auto text-xs text-textMuted font-mono">bash - Md Sibbir Ahamed</div>
+                    </div>
+                    <!-- Terminal Body -->
+                    <div class="p-6 md:p-10 font-mono text-sm md:text-base leading-relaxed h-80 flex flex-col justify-center">
+                        <div class="text-textMuted mb-2">Login: Md Sibbir Ahamed</div>
+                        <div class="mb-4">
+                            <span class="text-accPrimary">visitor@network</span>:<span class="text-accSecondary">~</span>$ whoami
+                            <br>
+                            <span class="text-textMain mt-1 block">Md Sibbir Ahamed</span>
+                        </div>
+                        <div class="mb-4">
+                            <span class="text-accPrimary">visitor@network</span>:<span class="text-accSecondary">~</span>$ cat role.txt
+                            <br>
+                            <span class="text-accPrimary mt-1 block">> Cybersecurity Specialist | Penetration Tester | Security Researcher</span>
+                        </div>
+                        <div>
+                            <span class="text-accPrimary">visitor@network</span>:<span class="text-accSecondary">~</span>$ ./execute_mission.sh
+                            <br>
+                            <span id="typed-text" class="text-textMuted mt-1 block cursor"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="mt-10 flex flex-wrap gap-4 justify-center reveal delay-200">
+                    <a href="https://drive.google.com/file/d/19x7-CIjVhvzwqeKrWxjx3kSu15UN7pF7/view" class="bg-transparent border border-accPrimary text-accPrimary hover:bg-accPrimary hover:text-bgBase font-mono font-semibold py-3 px-8 rounded transition-all duration-300 shadow-[0_0_15px_rgba(0,255,156,0.2)] hover:shadow-[0_0_25px_rgba(0,255,156,0.5)]">
+                        <i class="fa-solid fa-download mr-2"></i> Download Resume
+                    </a>
+                    <a href="#projects" class="bg-surface border border-surfaceLight text-textMain hover:border-accSecondary hover:text-accSecondary font-mono py-3 px-8 rounded transition-all duration-300">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="bg-surface border border-surfaceLight text-textMain hover:border-accSecondary hover:text-accSecondary font-mono py-3 px-8 rounded transition-all duration-300">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-24 px-4 bg-bgBase/50 border-t border-surfaceLight">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">01. <span class="text-accPrimary">About_Me</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                    <div class="space-y-6 text-textMuted leading-relaxed">
+                        <p>
+                            Hello! I'm <span class="text-accPrimary font-semibold">Md Sibbir Ahamed</span>, a dedicated Cybersecurity Specialist and Penetration Tester. My passion lies in breaking systems to build them back stronger, identifying vulnerabilities before threat actors do.
+                        </p>
+                        <p>
+                            With a strong foundation in web application security and network penetration testing, I focus on realistic threat modeling, ethical hacking, and responsible disclosure. My approach is rooted in an aggressive learning mindset—the threat landscape evolves daily, and so do my methodologies.
+                        </p>
+                        <p>
+                            Beyond running automated scanners, I specialize in manual exploitation, identifying logical flaws, and chaining vulnerabilities to demonstrate true business impact. I believe in bridging the gap between deep technical analysis and executive-level risk reporting.
+                        </p>
+                    </div>
+                    
+                    <!-- Code snippet abstract graphic -->
+                    <div class="glass-card p-6 rounded-lg font-mono text-sm text-textMuted overflow-hidden border border-surfaceLight relative group">
+                        <div class="absolute inset-0 bg-accPrimary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <pre><code><span class="text-purple-400">class</span> <span class="text-yellow-300">SecurityResearcher</span> {
+  <span class="text-purple-400">constructor</span>() {
+    <span class="text-blue-400">this</span>.name = <span class="text-green-300">'Md Sibbir Ahamed'</span>;
+    <span class="text-blue-400">this</span>.ethics = <span class="text-orange-300">true</span>;
+    <span class="text-blue-400">this</span>.coffeeLevel = <span class="text-green-300">'100%'</span>;
+  }
+
+  <span class="text-blue-300">analyzeTarget</span>(system) {
+    <span class="text-purple-400">if</span> (system.isVulnerable()) {
+      <span class="text-blue-400">this</span>.report(<span class="text-green-300">'Responsible Disclosure'</span>);
+      <span class="text-blue-400">this</span>.secure(system);
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-24 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">02. <span class="text-accPrimary">Skills_&_Arsenal</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                    <!-- Web Security -->
+                    <div class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-textMain mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-globe text-accPrimary"></i> Web Security
+                        </h3>
+                        <ul class="space-y-2 text-textMuted font-mono text-sm">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> OWASP Top 10</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> XSS / CSRF / SSRF</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> SQL/NoSQL Injection</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> IDOR & Auth Flaws</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> API Security Testing</li>
+                        </ul>
+                    </div>
+
+                    <!-- Network Security -->
+                    <div class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-textMain mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-network-wired text-accPrimary"></i> Network Sec
+                        </h3>
+                        <ul class="space-y-2 text-textMuted font-mono text-sm">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> Active Directory</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> OSINT & Recon</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> Port/Service Enum</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> Privilege Escalation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-accSecondary text-xs"></i> Wireless Pentesting</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-textMain mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-toolbox text-accPrimary"></i> Core Tools
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">Burp Suite</span>
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">Nmap</span>
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">Wireshark</span>
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">Metasploit</span>
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">Gobuster</span>
+                            <span class="px-2 py-1 bg-surfaceLight text-textMain text-xs rounded border border-gray-700">ffuf</span>
+                        </div>
+                    </div>
+
+                    <!-- Programming -->
+                    <div class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-textMain mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-code text-accPrimary"></i> Programming
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono text-textMuted mb-1">
+                                    <span>Python (Automation/Scripts)</span> <span>90%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-surfaceLight rounded"><div class="h-full bg-accPrimary rounded" style="width: 90%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono text-textMuted mb-1">
+                                    <span>Bash (Scripting)</span> <span>85%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-surfaceLight rounded"><div class="h-full bg-accPrimary rounded" style="width: 85%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-mono text-textMuted mb-1">
+                                    <span>JavaScript (Web Sec)</span> <span>80%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-surfaceLight rounded"><div class="h-full bg-accPrimary rounded" style="width: 80%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LABS, TRAINING & CERTS -->
+        <section id="training" class="py-24 px-4 bg-bgBase/50 border-t border-surfaceLight">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">03. <span class="text-accSecondary">Training_&_Certs</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <!-- Certifications Badges -->
+                <div class="flex flex-wrap gap-4 mb-12 reveal">
+                    <div class="glass-card-blue flex items-center gap-3 px-6 py-4 rounded-lg flex-grow sm:flex-grow-0">
+                        <i class="fa-solid fa-certificate text-accSecondary text-2xl"></i>
+                        <div>
+                            <div class="font-bold text-textMain">eJPT</div>
+                            <div class="text-xs text-textMuted font-mono">eLearnSecurity Junior Penetration Tester</div>
+                        </div>
+                    </div>
+                    <div class="glass-card-blue flex items-center gap-3 px-6 py-4 rounded-lg flex-grow sm:flex-grow-0">
+                        <i class="fa-solid fa-certificate text-accSecondary text-2xl"></i>
+                        <div>
+                            <div class="font-bold text-textMain">PNPT</div>
+                            <div class="text-xs text-textMuted font-mono">Practical Network Penetration Tester</div>
+                        </div>
+                    </div>
+                    <div class="glass-card-blue flex items-center gap-3 px-6 py-4 rounded-lg flex-grow sm:flex-grow-0">
+                        <i class="fa-solid fa-shield-halved text-accSecondary text-2xl"></i>
+                        <div>
+                            <div class="font-bold text-textMain">CompTIA Security+</div>
+                            <div class="text-xs text-textMuted font-mono">Core Security Concepts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Labs Grid -->
+                <div class="grid md:grid-cols-3 gap-6 reveal">
+                    <div class="bg-surface p-6 rounded-xl border border-surfaceLight relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-flask text-6xl text-accPrimary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">PortSwigger Labs</h3>
+                        <p class="text-sm text-textMuted mb-4">Focus: Advanced Web Application Security</p>
+                        <div class="font-mono text-xs text-accPrimary bg-accPrimary/10 inline-block px-2 py-1 rounded">Practitioner Level</div>
+                        <p class="text-sm text-textMuted mt-4 leading-relaxed">Completed 80+ labs focusing on Business Logic flaws, SQLi, SSRF, and advanced XSS payload crafting.</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl border border-surfaceLight relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-cube text-6xl text-accPrimary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">HackTheBox</h3>
+                        <p class="text-sm text-textMuted mb-4">Focus: Network Penetration & PrivEsc</p>
+                        <div class="font-mono text-xs text-accPrimary bg-accPrimary/10 inline-block px-2 py-1 rounded">Rank: Hacker</div>
+                        <p class="text-sm text-textMuted mt-4 leading-relaxed">Rooted 30+ active/retired machines. Expertise in Linux/Windows enumeration, custom exploit adaptation.</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl border border-surfaceLight relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-hat-wizard text-6xl text-accPrimary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">TryHackMe</h3>
+                        <p class="text-sm text-textMuted mb-4">Focus: Structured Pathways & Tooling</p>
+                        <div class="font-mono text-xs text-accPrimary bg-accPrimary/10 inline-block px-2 py-1 rounded">Top 2%</div>
+                        <p class="text-sm text-textMuted mt-4 leading-relaxed">Completed Offensive Pentesting and Web Fundamentals paths. Mastered active directory attack vectors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-24 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">04. <span class="text-accPrimary">Featured_Projects</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                    <!-- Project 1 -->
+                    <div class="glass-card p-6 rounded-xl flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="fa-regular fa-folder-open text-3xl text-accPrimary"></i>
+                            <a href="[GitHub Link]" target="_blank" class="text-textMuted hover:text-textMain transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">AutoRecon Script</h3>
+                        <p class="text-sm text-textMuted mb-4 flex-grow">A Bash/Python automation script chaining Subfinder, Amass, and httpx to build an initial attack surface map for Bug Bounty hunting.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-textMuted mt-4 pt-4 border-t border-surfaceLight">
+                            <span>Bash</span><span>Python</span><span>API</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card p-6 rounded-xl flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="fa-regular fa-folder-open text-3xl text-accPrimary"></i>
+                            <a href="[GitHub Link]" target="_blank" class="text-textMuted hover:text-textMain transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">Custom Burp Extension</h3>
+                        <p class="text-sm text-textMuted mb-4 flex-grow">A Python-based Burp Suite extension (Jython) that automatically highlights and extracts custom headers and JWT tokens for faster API testing.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-textMuted mt-4 pt-4 border-t border-surfaceLight">
+                            <span>Python</span><span>Jython</span><span>Burp API</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-card p-6 rounded-xl flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="fa-regular fa-folder-open text-3xl text-accPrimary"></i>
+                            <a href="[GitHub Link]" target="_blank" class="text-textMuted hover:text-textMain transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-textMain mb-2">Vulnerability Scanner</h3>
+                        <p class="text-sm text-textMuted mb-4 flex-grow">A lightweight multithreaded Python scanner designed to identify exposed .git directories and env files across large IP ranges.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-textMuted mt-4 pt-4 border-t border-surfaceLight">
+                            <span>Python</span><span>Multithreading</span><span>Regex</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUG BOUNTY & RESEARCH -->
+        <section id="bounty" class="py-24 px-4 bg-bgBase/50 border-t border-surfaceLight">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">05. <span class="text-accSecondary">BugBounty_&_Research</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <div class="max-w-3xl mx-auto border-l-2 border-surfaceLight relative py-4 space-y-12 reveal">
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative pl-8">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card-blue p-6 rounded-xl">
+                            <span class="font-mono text-xs text-accSecondary mb-2 block">Nov 2023 - Present</span>
+                            <h3 class="text-xl font-bold text-textMain mb-2">HackerOne & Bugcrowd Hunter</h3>
+                            <p class="text-sm text-textMuted mb-3">Actively participating in public and private bug bounty programs. Specializing in identifying Business Logic flaws, IDORs, and sensitive data exposure.</p>
+                            <span class="inline-block bg-surfaceLight text-textMain text-xs px-2 py-1 rounded border border-gray-700">Multiple Valid Reports</span>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative pl-8">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card-blue p-6 rounded-xl">
+                            <span class="font-mono text-xs text-accSecondary mb-2 block">Aug 2023</span>
+                            <h3 class="text-xl font-bold text-textMain mb-2">Responsible Disclosure: CVE-YYYY-XXXX</h3>
+                            <p class="text-sm text-textMuted mb-3">Discovered and responsibly disclosed an Unauthenticated Account Takeover vulnerability via flawed password reset mechanism in an open-source CMS platform.</p>
+                            <span class="inline-block bg-surfaceLight text-textMain text-xs px-2 py-1 rounded border border-gray-700">Account Takeover</span>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative pl-8">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card-blue p-6 rounded-xl">
+                            <span class="font-mono text-xs text-accSecondary mb-2 block">Feb 2023</span>
+                            <h3 class="text-xl font-bold text-textMain mb-2">Research: Bypassing Modern WAFs</h3>
+                            <p class="text-sm text-textMuted mb-3">Authored a research paper/writeup detailing techniques for obfuscating XSS payloads to bypass common Web Application Firewalls using specific encoding anomalies.</p>
+                            <a href="#blog" class="text-accSecondary text-sm hover:underline">Read Writeup <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG / WRITEUPS -->
+        <section id="blog" class="py-24 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-textMain font-mono">06. <span class="text-accPrimary">Articles_&_Writeups</span></h2>
+                    <div class="h-px bg-surfaceLight flex-grow"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 reveal">
+                    <!-- Article 1 -->
+                    <article class="bg-surface rounded-xl overflow-hidden border border-surfaceLight hover:border-accPrimary transition-colors group">
+                        <div class="h-48 bg-surfaceLight relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-user-ninja text-5xl text-gray-700 group-hover:text-accPrimary group-hover:scale-110 transition-all duration-500"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="font-mono text-xs text-accPrimary mb-2">Jan 15, 2024</div>
+                            <h3 class="text-lg font-bold text-textMain mb-2 group-hover:text-accPrimary transition-colors">Understanding Complex IDOR Vulnerabilities</h3>
+                            <p class="text-sm text-textMuted mb-4 line-clamp-3">A deep dive into Insecure Direct Object References, moving beyond simple parameter tampering to exploiting RESTful APIs using UUID anomalies.</p>
+                            <a href="#" class="font-mono text-sm text-textMain hover:text-accPrimary inline-flex items-center gap-2">
+                                Read More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="bg-surface rounded-xl overflow-hidden border border-surfaceLight hover:border-accPrimary transition-colors group">
+                        <div class="h-48 bg-surfaceLight relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-key text-5xl text-gray-700 group-hover:text-accPrimary group-hover:scale-110 transition-all duration-500"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="font-mono text-xs text-accPrimary mb-2">Dec 02, 2023</div>
+                            <h3 class="text-lg font-bold text-textMain mb-2 group-hover:text-accPrimary transition-colors">How Authentication Bypass Happens</h3>
+                            <p class="text-sm text-textMuted mb-4 line-clamp-3">Analyzing common logic flaws in OAuth implementations and custom JWT signing algorithms that lead to full account takeover.</p>
+                            <a href="#" class="font-mono text-sm text-textMain hover:text-accPrimary inline-flex items-center gap-2">
+                                Read More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="bg-surface rounded-xl overflow-hidden border border-surfaceLight hover:border-accPrimary transition-colors group">
+                        <div class="h-48 bg-surfaceLight relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-radar-indicator text-5xl text-gray-700 group-hover:text-accPrimary group-hover:scale-110 transition-all duration-500"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="font-mono text-xs text-accPrimary mb-2">Oct 18, 2023</div>
+                            <h3 class="text-lg font-bold text-textMain mb-2 group-hover:text-accPrimary transition-colors">Recon Methodology for Bug Bounties</h3>
+                            <p class="text-sm text-textMuted mb-4 line-clamp-3">Sharing my personal methodology for wide-scope recon, from ASN enumeration to automated fuzzing pipelines.</p>
+                            <a href="#" class="font-mono text-sm text-textMain hover:text-accPrimary inline-flex items-center gap-2">
+                                Read More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 px-4 bg-bgBase/50 border-t border-surfaceLight">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold text-textMain font-mono mb-4">07. <span class="text-accPrimary">Initiate_Connection</span></h2>
+                    <p class="text-textMuted max-w-2xl mx-auto">Currently open for new opportunities, freelance penetration testing, and exciting bug bounty collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 text-left">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-xl font-bold text-textMain mb-6">Contact Coordinates</h3>
+                        <div class="space-y-6">
+                            <a href="mailto:pentester.sibbir@gmail.com" class="flex items-center gap-4 text-textMuted hover:text-accPrimary transition-colors group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-surfaceLight flex items-center justify-center group-hover:border-accPrimary">
+                                    <i class="fa-solid fa-envelope text-xl"></i>
+                                </div>
+                                <span class="font-mono">pentester.sibbir@gmail.com</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/md-sibbir-ahamed/" target="_blank" class="flex items-center gap-4 text-textMuted hover:text-accPrimary transition-colors group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-surfaceLight flex items-center justify-center group-hover:border-accPrimary">
+                                    <i class="fa-brands fa-linkedin text-xl"></i>
+                                </div>
+                                <span class="font-mono">LinkedIn Profile</span>
+                            </a>
+                            <a href="[GitHub Link]" target="_blank" class="flex items-center gap-4 text-textMuted hover:text-accPrimary transition-colors group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-surfaceLight flex items-center justify-center group-hover:border-accPrimary">
+                                    <i class="fa-brands fa-github text-xl"></i>
+                                </div>
+                                <span class="font-mono">GitHub Repositories</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-mono text-textMuted mb-1">Name</label>
+                            <input type="text" id="name" required class="w-full bg-surface border border-surfaceLight rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-accPrimary focus:ring-1 focus:ring-accPrimary transition-all">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-mono text-textMuted mb-1">Email</label>
+                            <input type="email" id="email" required class="w-full bg-surface border border-surfaceLight rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-accPrimary focus:ring-1 focus:ring-accPrimary transition-all">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-mono text-textMuted mb-1">Message</label>
+                            <textarea id="message" rows="4" required class="w-full bg-surface border border-surfaceLight rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-accPrimary focus:ring-1 focus:ring-accPrimary transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-transparent border border-accPrimary text-accPrimary hover:bg-accPrimary hover:text-bgBase font-mono font-bold py-3 px-6 rounded transition-all duration-300">
+                            Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                        <div id="form-status" class="hidden text-center text-sm font-mono mt-4 text-accPrimary">Message sent successfully!</div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface py-8 border-t border-surfaceLight text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="font-mono text-xl font-bold tracking-tighter mb-4 opacity-50">
+                <span class="text-accPrimary">root@</span><span class="text-textMain">portfolio</span><span class="text-accSecondary">:~#</span>
+            </div>
+            <p class="text-textMuted text-sm mb-4">"Breaking systems securely to build them back stronger."</p>
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="[GitHub Link]" target="_blank" class="text-textMuted hover:text-accPrimary transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/md-sibbir-ahamed/" target="_blank" class="text-textMuted hover:text-accPrimary transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="[Twitter/X Link]" target="_blank" class="text-textMuted hover:text-accPrimary transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+            </div>
+            <p class="text-textMuted text-xs font-mono">
+                &copy; <script>document.write(new Date().getFullYear())</script> Md Sibbir Ahamed. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Typing Effect for Hero Section
+        const textToType = "Scanning target... \nEvaluating vulnerabilities... \nSystem compromised successfully.";
+        const typeSpeed = 50;
+        let index = 0;
+        const targetElement = document.getElementById("typed-text");
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                if(textToType.charAt(index) === '\n') {
+                    targetElement.innerHTML += '<br>';
+                } else {
+                    targetElement.innerHTML += textToType.charAt(index);
+                }
+                index++;
+                setTimeout(typeWriter, typeSpeed);
+            }
+        }
+        
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll(".reveal");
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add("active");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar blur effect on scroll
+        const nav = document.querySelector('.glass-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(11, 15, 25, 0.9)';
+                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            } else {
+                nav.style.background = 'rgba(11, 15, 25, 0.8)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Mock Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            // Simulate network request
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                contactForm.reset();
+                formStatus.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    formStatus.classList.add('hidden');
+                }, 4000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
